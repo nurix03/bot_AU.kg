@@ -9,13 +9,13 @@ exports.nambaApi = {
   createChat(user_id) {
     return new Promise((resolve, reject) => {
       var headers_data = {
-          url: create_chat_url,
-          method: 'POST',
-          headers:{'X-Namba-Auth-Token': access_config.token},
-          body:{
-              'members': [user_id]
-          },
-          json: true
+        url: create_chat_url,
+        method: 'POST',
+        headers:{'X-Namba-Auth-Token': access_config.token},
+        body:{
+            'members': [user_id]
+        },
+        json: true
       }
       request(headers_data, function(err, response, body) {
         resolve(body.data.id);
@@ -26,14 +26,14 @@ exports.nambaApi = {
   postToChat(msg, chat_id) {
     return new Promise((resolve, reject) => {
       var headers_data = {
-          url: chats_url + chat_id + '/write',
-          method: 'POST',
-          headers:{'X-Namba-Auth-Token': access_config.token},
-          body:{
-            type:'text/plain',
-            content: msg
-          },
-          json: true
+        url: chats_url + chat_id + '/write',
+        method: 'POST',
+        headers:{'X-Namba-Auth-Token': access_config.token},
+        body:{
+          type:'text/plain',
+          content: msg
+        },
+        json: true
       }
       request(headers_data, function(err, response, body) {
         if (!body.success) {
@@ -69,10 +69,10 @@ exports.nambaApi = {
   setTyping(chat_id) {
     return new Promise(function(resolve, reject) {
       var headersData = {
-          url:'https://api.namba1.co/chats/' + chat_id + '/typing',
-          method: 'GET',
-          headers:{'X-Namba-Auth-Token':access_config.token},
-          json: true
+        url:'https://api.namba1.co/chats/' + chat_id + '/typing',
+        method: 'GET',
+        headers:{'X-Namba-Auth-Token':access_config.token},
+        json: true
       }
       request(headersData, function(err, response, body) {
         resolve ()

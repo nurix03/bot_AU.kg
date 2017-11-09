@@ -43,7 +43,6 @@ exports.CRUD = {
   dropUserData(user) {
     return new Promise((resolve, reject) => {
       User.update({
-        subscription: false,
         rubric: null,
         sub_rubric: null,
         rubric_choosen: false,

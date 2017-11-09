@@ -33,7 +33,6 @@ exports.auApi = {
       }
       request.post({url:au_url, formData: form_data}, (err, httpResponse, body) => {
         if (err) throw (err);
-        console.log("========", body);
         resolve(JSON.parse(body));
       });
     })
