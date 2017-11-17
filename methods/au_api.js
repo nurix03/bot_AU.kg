@@ -16,7 +16,8 @@ exports.auApi = {
         page: 1
       }
       request.post({url:au_url, formData: form_data}, (err, httpResponse, body) => {
-        if (err) throw (err);
+				console.log("Cant't get body: ", body)	
+				if (err) throw (err);
         resolve(JSON.parse(body));
       });
     })

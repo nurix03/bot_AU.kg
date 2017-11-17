@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
   return sequelize.define("user", {
     name: DataTypes.STRING,
-    namba_id: DataTypes.STRING,
+    namba_id: DataTypes.INTEGER,
     chat_id: DataTypes.STRING,
     subscription: DataTypes.BOOLEAN,
     rubric: DataTypes.INTEGER,
