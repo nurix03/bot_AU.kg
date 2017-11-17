@@ -125,7 +125,7 @@ async function answerToUser(namba_user_data) {
       return;
     }
     await CRUD.setSubRubricForUser(user, sub_rubric_index);
-    var updated_user = await CRUD.findUser(user);
+    var updated_user = await CRUD.findUser(namba_user_data);
     var sub_rubric_id = await helpers.getSubRubricId(updated_user, rubrics);
     var auPosts = await auApi.getTenRubricPosts(
       sub_rubric_id, user.sub_rubrics_page);

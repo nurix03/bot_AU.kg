@@ -75,11 +75,13 @@ exports.CRUD = {
   },
 
   findUser(user) {
-    console.log(user)
-		return new Promise((resolve, reject) => {
-      User.findOne({ where: {namba_id: user.namba_user_id} })
+    namba_user_id = user.namba_user_id ?
+    user.namba_user_id :
+    user.namba_id
+
+    return new Promise((resolve, reject) => {
+      User.findOne({ where: {namba_id: namba_user_id} })
         .then(user => {
-					console.log("Hooooooooooooo", user)			
           resolve(user.dataValues);
         });
     })
