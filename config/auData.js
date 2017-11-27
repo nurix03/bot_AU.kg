@@ -23,7 +23,7 @@ module.exports = {
       { sub_rubric: 600 }, { sub_rubric: 534 }, { sub_rubric: 539 },
       { sub_rubric: 536 }, { sub_rubric: 533 },
       { sub_rubric: 519 } ],
-      
+
     [ { sub_rubric: 416 }, { sub_rubric: 404 }, { sub_rubric: 395 },
       { sub_rubric: 390 }, { sub_rubric: 396 }, { sub_rubric: 413 },
       { sub_rubric: 382 }, { sub_rubric: 601 }, { sub_rubric: 376 },
@@ -95,6 +95,4 @@ module.exports = {
 
     [ { sub_rubric: 147 } ]
   ]
-
-
 }

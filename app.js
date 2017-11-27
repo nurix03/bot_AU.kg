@@ -79,7 +79,7 @@ setIntervalForSubscribedUsers = (users) => {
         }
       })();
     });
-  }, 60000 * 60 * 60 * 24);
+  }, 60000 * 60 * 24);
 }
 
 module.exports = app;

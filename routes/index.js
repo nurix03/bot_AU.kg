@@ -19,7 +19,6 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res) {
   var event = req.body.event;
   var data = req.body.data;
-	console.log("Request came");
 
   if (event == 'user/follow') {
     (async () => {
