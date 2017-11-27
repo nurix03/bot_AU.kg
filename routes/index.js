@@ -9,6 +9,8 @@ var CRUD = require('../database/methods/CRUD').CRUD;
 var messages = require('../config/messages');
 var helpers = require('../methods/helpers');
 
+var  startCommands = ['Start', 'start', 'Старт', 'старт'];
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', {
@@ -81,7 +83,10 @@ async function createAndWelcomeUser(namba_one_user) {
 }
 
 async function answerToUser(namba_user_data) {
-  var user = await CRUD.findUser(namba_user_data);
+  if (startCommands.indexOf(namba_user_data.content) >= 0) {
+    await CRUD.dropUserData(namba_user_data);
+  }
+  user = await CRUD.findUser(namba_user_data);
   var user_case = await helpers.defineUsersCase(user);
   var rubrics = await helpers.getRubrics();
 
