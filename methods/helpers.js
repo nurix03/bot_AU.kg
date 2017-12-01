@@ -114,11 +114,14 @@ module.exports = {
       var posts = "";
 
       for(i=0; i<au_posts.length; i++) {
+        header = au_posts[i].header.replace(/(\r\n|\n|\r)/gm,"");
         var empty = au_posts[i].salary == "";
+        var empty2 = au_posts[i].profession == "Не определено"
         var salary =  empty ? "Договорная" : au_posts[i].salary;
+        var profession =  empty2 ? "" : au_posts[i].profession;
 
-        posts += "=========== " + messages.emoji_nums[i] + " ============\n" +
-                  au_posts[i].body + "\n\n" + " 💲 : " + salary + "\n\n";
+
+        posts += "=========== " + messages.emoji_nums[i] + " ============\n\n" + '💼' + header + "\n💰 " + salary + "\n🏭"+ profession + "\n💬" + au_posts[i].body + "\n" + "\n🔗" + au_posts[i].link + "\n 📞 : " + au_posts[i].telephone + "\n\n";
       }
       resolve({out_of_limit:false, msg:posts});
     })

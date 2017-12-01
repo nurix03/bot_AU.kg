@@ -56,7 +56,7 @@ exports.CRUD = {
         sub_rubrics_page: 1
       }, {
         where: {
-          namba_id: user.namba_user_id
+          namba_id: namba_user_id
         }
       }).then((user) => {
         resolve();

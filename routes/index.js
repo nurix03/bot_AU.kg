@@ -148,10 +148,27 @@ async function updateUsersSubRubric(user, rubric_index) {
   var rubrics = await auApi.getRubrics();
   var sub_rubric_names = await helpers.defineSubRubrics(
     rubrics[rubric_index].subrubrics);
-  await nambaApi.postToChat(sub_rubric_names, user.chat_id);
   await CRUD.setSubRubricLen(user, rubrics[rubric_index].subrubrics)
   await CRUD.setSubRubricsSent(user);
-  return;
+  if (rubrics[rubric_index].subrubrics.length == 1) {
+    await CRUD.setSubRubricForUser(user, 0);
+    var updated_user = await CRUD.findUser(user);
+    var sub_rubric_id = await helpers.getSubRubricId(updated_user, rubrics);
+    var auPosts = await auApi.getTenRubricPosts(
+      sub_rubric_id, user.sub_rubrics_page);
+    var vacancies = await helpers.extractDataFromAuPosts(user, auPosts);
+    await CRUD.incrementUserPage(user);
+    await nambaApi.postToChat(vacancies.msg, user.chat_id);
+    await helpers.delay();
+    var msg = user.subscription ? messages.avail_commands_unsubscribe : messages.avail_commands_subscribe
+    await nambaApi.postToChatWithDelay(
+      messages.available_commands + msg, user.chat_id);
+    return;
+  }
+  else {
+    await nambaApi.postToChat(sub_rubric_names, user.chat_id);
+    return;
+  }
 }
 
 async function takeAction(user, action) {
